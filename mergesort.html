@@ -14,14 +14,12 @@
         //     a.push(z);
         //     console.log(a);
         // }
-        function merge(a)
+        function mergesort(a)
         {
             if((a.length) < 2)
             {
             return a;
-            }
-            else
-            {           
+                      
              var mid1= Math.floor((a.length)/2);
              var leftarray  = a.slice(0,mid1);
              var rightarray = a.slice(mid1);
@@ -32,19 +30,38 @@
             let y= merge(rightarray);
             console.log("x=" +x);
             console.log("y=" +y);
+            zarray=merge(x,y)
+            return zarray;
         }
+
+        function merge(left,right)
+        {
+            var temp=[]
+            while(left.length && right.length)
+            {
+                if(left[0] < right[0])
+                {
+                    temp.push(left.shift())
+                }
+                else
+                {
+                    temp.push(right.shift())
+
+                }
+            }
+        }
+         a=temp.concat(left,right)
+         return a;
         
-        
-
-
-
 
     </script>
 </head>
 <body>
     <!-- <input type="text" id="text1">
     <input type="button" value="add" onclick="add()"> -->
-    <input type="button" value="sort" onclick="merge(a)">
+    <input type="button" value="sort" onclick="mergesort(a)">
+
+
     
 </body>
 </html>
