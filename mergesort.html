@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        var a=[22,52,40,-7,-100,100,-1,55]
+        var array=[22,52,40,-7,-100,100,-1,55]
         // let a=[]
         
         // function add()
@@ -14,44 +14,46 @@
         //     a.push(z);
         //     console.log(a);
         // }
-        function mergesort(a)
+        function mergesort(array)
         {
-            if((a.length) < 2)
+            if((array.length) < 2)
             {
-            return a;
+            return array;
                       
-             var mid1= Math.floor((a.length)/2);
-             var leftarray  = a.slice(0,mid1);
-             var rightarray = a.slice(mid1);
+             var mid1= Math.floor((array.length)/2);
+             var leftarray  = array.slice(0,mid1);
+             var rightarray = array.slice(mid1);
              console.log(leftarray);
              console.log(rightarray);
             }
-            let x= merge(leftarray);
-            let y= merge(rightarray);
+            let x= mergesort(leftarray);
+            let y= mergesort(rightarray);
             console.log("x=" +x);
             console.log("y=" +y);
             zarray=merge(x,y)
             return zarray;
         }
 
-        function merge(left,right)
+        function merge(leftarray,rightarray)
         {
             var temp=[]
-            while(left.length && right.length)
+            while(leftarray.length && rightarray.length)
             {
-                if(left[0] < right[0])
+                if(leftarray[0] < rightarray[0])
                 {
-                    temp.push(left.shift())
+                    temp.push(leftarray.shift())
                 }
                 else
                 {
-                    temp.push(right.shift())
+                    temp.push(rightarray.shift())
 
                 }
             }
+        
+         var mainarray=temp.concat(leftarray,rightarray)
+            console.log(mainarray);
+         return array;
         }
-         a=temp.concat(left,right)
-         return a;
         
 
     </script>
